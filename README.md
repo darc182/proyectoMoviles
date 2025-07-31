@@ -335,11 +335,11 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 📞 Contacto
 
 **Equipo de Desarrollo**
-- Darwin Cachimil - [GitHub](https://github.com/darwin-cachimil)
-- Andrés Tufiño - [GitHub](https://github.com/andres-tufino)
+- Darwin Cachimil - [GitHub](https://github.com/darc182)
+- Andrés Tufiño - [GitHub](https://github.com/Andrespipe1)
 - Wilmer Vargas - [GitHub](https://github.com/wilmer-vargas)
 
-**Proyecto:** [https://github.com/tu-usuario/TopoMapTracker](https://github.com/tu-usuario/TopoMapTracker)
+**Proyecto:** [https://github.com/darc182/proyectoMoviles.git](https://github.com/darc182/proyectoMoviles.git)
 
 ---
 
