@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopoMapTracker - Panel Administrativo</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-extra.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<div id="loading-screen" class="loading-screen">
+    <div class="loading-container">
+        <div class="loading-logo">🗺️</div>
+        <h2 class="loading-title">TopoMapTracker</h2>
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        <p class="loading-text">Cargando panel administrativo...</p>
+    </div>
+</div>
+
+<!-- HEADER CON NAVEGACIÓN -->
+<div class="dashboard-container" >
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">🗺️</div>
+            <h2>TopoMapTracker</h2>
+            <p>Panel Administrativo</p>
+        </div>
+
+        <nav class="nav-menu">
+            <div class="nav-section">
+                <div class="nav-section-title">Principal</div>
+                <button class="nav-link active" data-section="dashboard">
+                    <i>📊</i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-link" data-section="users">
+                    <i>👥</i>
+                    <span>Usuarios</span>
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Contenido</div>
+                <button class="nav-link" data-section="terrains">
+                    <i>🗺️</i>
+                    <span>Terrenos</span>
+                </button>
+                <button class="nav-link" data-section="sessions">
+                    <i>🤝</i>
+                    <span>Sesiones</span>
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Herramientas</div>
+                <button class="nav-link" data-section="reports" data-role-required="Administrador">
+                    <i>📈</i>
+                    <span>Reportes</span>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+
+    <!-- HEADER MEJORADO -->
+    <header class="header">
+        <div class="header-left">
+            <h1 id="page-title">Dashboard</h1>
+            <p id="page-subtitle">Resumen general del sistema</p>
+        </div>
+
+        <div class="header-right">
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-value" id="header-users">0</div>
+                    <div class="header-stat-label">Usuarios</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value" id="header-terrains">0</div>
+                    <div class="header-stat-label">Terrenos</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value" id="header-online">0</div>
+                    <div class="header-stat-label">En línea</div>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">
+                    <span class="user-name-initial">A</span>
+                </div>
+                <div class="user-details">
+                    <h4 class="user-name">Administrador</h4>
+                    <p class="user-role">Administrador</p>
+                </div>
+            </div>
+
+            <button class="logout-btn">
+                Cerrar Sesión
+            </button>
+        </div>
+    </header>
+
+
+
+    <!-- SECCIÓN DASHBOARD -->
+    <div class="content">
+
+    <section id="dashboard-section" class="section active">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span>📊</span>
+                Dashboard Principal
+            </h2>
+            <p class="section-subtitle">Monitoreo en tiempo real del sistema TopoMapTracker</p>
+        </div>
+
+
+        <!-- STATS CARDS -->
+        <div class="stats-grid">
+            <div class="stat-card users">
+                <div class="stat-card-header">
+                    <div class="stat-icon">👥</div>
+                </div>
+                <div class="stat-number" id="total-users">0</div>
+                <p class="stat-label">Total Usuarios</p>
+            </div>
+
+            <div class="stat-card terrains">
+                <div class="stat-card-header">
+                    <div class="stat-icon">🗺️</div>
+                </div>
+                <div class="stat-number" id="total-terrains">0</div>
+                <p class="stat-label">Terrenos Mapeados</p>
+            </div>
+
+            <div class="stat-card sessions">
+                <div class="stat-card-header">
+                    <div class="stat-icon">🤝</div>
+                </div>
+                <div class="stat-number" id="active-sessions">0</div>
+                <p class="stat-label">Sesiones Activas</p>
+            </div>
+
+            <div class="stat-card area">
+                <div class="stat-card-header">
+                    <div class="stat-icon">📏</div>
+                </div>
+                <div class="stat-number" id="total-area">0</div>
+                <p class="stat-label">Área Total</p>
+            </div>
+
+            <div class="stat-card online">
+                <div class="stat-card-header">
+                    <div class="stat-icon">🟢</div>
+                </div>
+                <div class="stat-number" id="active-users">0</div>
+                <p class="stat-label">Usuarios Activos</p>
+            </div>
+        </div>
+
+
+        <!-- DASHBOARD LAYOUT -->
+        <div class="dashboard-layout">
+            <div class="dashboard-main">
+                <!-- MAPA -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span>🗺️</span>
+                            Ubicaciones en Tiempo Real
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="map-container">
+                            <div id="admin-map"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRÁFICOS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span>📊</span>
+                            Estadísticas de Terrenos
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="terrain-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-sidebar">
+                <!-- ACTIVIDAD RECIENTE -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span>⚡</span>
+                            Actividad Reciente
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list" id="recent-activity">
+                            <div class="loading-message">Cargando actividad...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISTRIBUCIÓN DE ROLES -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span>👥</span>
+                            Distribución de Roles
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="role-chart" width="300" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- SECCIÓN USUARIOS -->
+    <section id="users-section" class="admin-section">
+        <div class="section-header">
+            <h1>👥 Gestión de Usuarios</h1>
+            <div class="section-actions">
+                <input type="text" id="user-search" placeholder="🔍 Buscar usuarios..." class="search-input">
+                <select id="role-filter" class="filter-select">
+                    <option value="">Todos los roles</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Topógrafo">Topógrafo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="users-table" class="admin-table">
+                <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Última Actividad</th>
+                    <th data-role-required="Administrador">Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="users-tbody">
+                <tr>
+                    <td colspan="6" class="loading">Cargando usuarios...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECCIÓN TERRENOS -->
+    <section id="terrains-section" class="admin-section">
+        <div class="section-header">
+            <h1>🌍 Gestión de Terrenos</h1>
+            <div class="section-actions">
+                <input type="text" id="terrain-search" placeholder="🔍 Buscar terrenos..." class="search-input">
+                <select id="terrain-creator-filter" class="filter-select">
+                    <option value="">Todos los creadores</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="terrains-table" class="admin-table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Creador</th>
+                    <th>Área (m²)</th>
+                    <th>Puntos</th>
+                    <th>Fecha Creación</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="terrains-tbody">
+                <tr>
+                    <td colspan="6" class="loading">Cargando terrenos...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SESIONES -->
+    <section id="sessions-section" class="admin-section">
+        <div class="section-header">
+            <h1>🔗 Sesiones Colaborativas</h1>
+            <div class="section-actions">
+                <button id="refresh-sessions" class="action-btn">🔄 Actualizar</button>
+            </div>
+        </div>
+
+        <div class="sessions-grid">
+            <div class="session-card active-sessions">
+                <h3>✅ Sesiones Activas</h3>
+                <div id="active-sessions-list" class="sessions-list">
+                    <div class="loading">Cargando sesiones activas...</div>
+                </div>
+            </div>
+
+            <div class="session-card completed-sessions">
+                <h3>✅ Sesiones Completadas</h3>
+                <div id="completed-sessions-list" class="sessions-list">
+                    <div class="loading">Cargando sesiones completadas...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN REPORTES (Solo Administradores) -->
+    <section id="reports-section" class="admin-section" data-role-required="Administrador">
+        <div class="section-header">
+            <h1>📈 Reportes y Análisis</h1>
+            <div class="section-actions">
+                <button id="export-report" class="action-btn">📊 Exportar Reporte</button>
+                <button id="generate-backup" class="action-btn">💾 Crear Backup</button>
+            </div>
+        </div>
+
+        <div class="reports-grid">
+            <div class="report-card">
+                <h3>📊 Uso por Rol</h3>
+                <canvas id="roles-chart" width="300" height="200"></canvas>
+            </div>
+
+            <div class="report-card">
+                <h3>📈 Terrenos por Mes</h3>
+                <canvas id="monthly-chart" width="300" height="200"></canvas>
+            </div>
+
+            <div class="report-card">
+                <h3>🕒 Actividad por Hora</h3>
+                <canvas id="hourly-chart" width="300" height="200"></canvas>
+            </div>
+
+            <div class="report-card">
+                <h3>📋 Resumen General</h3>
+                <div id="general-summary" class="summary-content">
+                    <div class="loading">Generando resumen...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div> <!-- Fin de .content -->
+
+</main>
+</div> <!-- Fin de .dashboard-container -->
+
+<!-- MODAL PARA DETALLES -->
+<div id="details-modal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 id="modal-title">Detalles</h2>
+        <div id="modal-body">
+            <!-- Contenido dinámico -->
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

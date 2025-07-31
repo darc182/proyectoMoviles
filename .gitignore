@@ -1,0 +1,72 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+*.iml
+.gradle/
+/build
+build/
+
+# Local configuration file (sdk path, etc)
+/local.properties
+local.properties
+
+# Android Studio
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/dictionaries
+.idea/caches
+.idea/modules.xml
+.idea/gradle.xml
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# External native build folder
+/captures
+.externalNativeBuild
+.cxx
+
+# Archivos de firma - NO SUBIR A REPOSITORIO
+*.keystore
+*.jks
+keystore.properties
+release-key.keystore
+
+# Firebase config files - IMPORTANTE: NO SUBIR CLAVES
+google-services.json
+app/google-services.json
+web-admin/js/firebase-config.js
+
+# Log Files
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

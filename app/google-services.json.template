@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "TU_PROJECT_NUMBER",
+    "project_id": "TU_PROJECT_ID",
+    "storage_bucket": "TU_PROJECT_ID.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "TU_MOBILE_SDK_APP_ID",
+        "android_client_info": {
+          "package_name": "com.ups.topomaptracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "TU_CLIENT_ID",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "TU_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "TU_CLIENT_ID",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

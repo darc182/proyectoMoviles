@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Barra superior con botón de logout -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/purple_500"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Usuario"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:paddingStart="8dp" />
+
+        <TextView
+            android:id="@+id/tvUserRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rol"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp" />
+
+
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            android:text="Salir"
+            android:textSize="12sp"
+            android:backgroundTint="@color/purple_700" />
+
+    </LinearLayout>
+
+    <!-- Mapa -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBar"
+        android:layout_above="@id/bottomButtons" />
+
+    <!-- Botones inferiores ampliados -->
+    <LinearLayout
+        android:id="@+id/bottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#80000000">
+
+        <!-- Primera fila: Terrenos individuales -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnClearPoints"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Limpiar"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnSaveTerrain"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Guardar Terreno"
+                android:textSize="11sp" />
+
+
+            <Button
+                android:id="@+id/btnCreateUser"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:text="Crear Usuario"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                 />
+
+
+
+
+
+        </LinearLayout>
+
+        <!-- Segunda fila: Sesiones colaborativas -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnCreateSession"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="2dp"
+                android:text="Crear Sesión"
+                android:textSize="11sp"
+                android:backgroundTint="@android:color/holo_blue_dark" />
+
+            <Button
+                android:id="@+id/btnJoinSession"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:text="Unirse"
+                android:textSize="11sp"
+                android:backgroundTint="@android:color/holo_orange_dark" />
+
+            <Button
+                android:id="@+id/btnFinishSession"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Finalizar"
+                android:textSize="11sp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+        <!-- Tercera fila: Tracking y agregar punto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnViewTerrains"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="2dp"
+                android:text="Ver Terrenos"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnAddPoint"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:text="Agregar Punto"
+                android:textSize="11sp"
+                android:backgroundTint="@android:color/holo_purple"
+                android:enabled="false" />
+
+            <Button
+                android:id="@+id/btnToggleTracking"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Iniciar Tracking"
+                android:textSize="11sp"
+                android:backgroundTint="@android:color/holo_green_dark" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
